@@ -58,12 +58,12 @@ cdef extern from "merlict_c89/merlict_c89/mliHomTra.h":
         pass
 
     struct mliHomTraComp:
-        mliVec trans
-        mliQuaternion rot
+        mliVec translation
+        mliQuaternion rotation
 
     mliHomTraComp mliHomTraComp_set(
-        const mliVec trans,
-        const mliQuaternion rot
+        const mliVec translation,
+        const mliQuaternion rotation
     )
 
     mliHomTraComp mliHomTraComp_sequence(
@@ -80,7 +80,7 @@ cdef extern from "merlict_c89/merlict_c89/mliHomTra.h":
 
 
 Quaternion = namedtuple('Quaternion', ['w', 'x', 'y', 'z'])
-HomTra = namedtuple('HomTra', ['trans', 'rot'])
+HomTra = namedtuple('HomTra', ['translation', 'rotation'])
 Vec = namedtuple('Vec', ['x', 'y', 'z'])
 
 
@@ -114,32 +114,47 @@ def sequence(homtra_A_to_B, homtra_B_to_C):
     ab = homtra_A_to_B
     bc = homtra_B_to_C
     _ab = mliHomTraComp_set(
-        mliVec_set(ab.trans.x, ab.trans.y, ab.trans.z),
-        mliQuaternion_set(ab.rot.w, ab.rot.x, ab.rot.y, ab.rot.z)
+        mliVec_set(ab.translation.x, ab.translation.y, ab.translation.z),
+        mliQuaternion_set(
+            ab.rotation.w,
+            ab.rotation.x,
+            ab.rotation.y,
+            ab.rotation.z
+        )
     )
     _bc = mliHomTraComp_set(
-        mliVec_set(bc.trans.x, bc.trans.y, bc.trans.z),
-        mliQuaternion_set(bc.rot.w, bc.rot.x, bc.rot.y, bc.rot.z)
+        mliVec_set(bc.translation.x, bc.translation.y, bc.translation.z),
+        mliQuaternion_set(
+            bc.rotation.w,
+            bc.rotation.x,
+            bc.rotation.y,
+            bc.rotation.z
+        )
     )
     _ac = mliHomTraComp_sequence(_ab, _bc)
     return HomTra(
-        rot=Quaternion(_ac.rot.w, _ac.rot.x, _ac.rot.y, _ac.rot.z),
-        trans=Vec(_ac.trans.x, _ac.trans.y, _ac.trans.z)
+        rotation=Quaternion(
+            _ac.rotation.w,
+            _ac.rotation.x,
+            _ac.rotation.y,
+            _ac.rotation.z
+        ),
+        translation=Vec(_ac.translation.x, _ac.translation.y, _ac.translation.z)
     )
 
 
 cdef mliHomTra _extract_homtra(homtra):
     _homtra_comp = mliHomTraComp_set(
         mliVec_set(
-            homtra.trans.x,
-            homtra.trans.y,
-            homtra.trans.z
+            homtra.translation.x,
+            homtra.translation.y,
+            homtra.translation.z
         ),
         mliQuaternion_set(
-            homtra.rot.w,
-            homtra.rot.x,
-            homtra.rot.y,
-            homtra.rot.z,
+            homtra.rotation.w,
+            homtra.rotation.x,
+            homtra.rotation.y,
+            homtra.rotation.z,
         )
     )
     return mliHomTra_from_compact(_homtra_comp)
