@@ -5,6 +5,13 @@ import os
 with open("README.md", "r") as f:
     long_description = f.read()
 
+_mli_path = os.path.join(
+    'homogeneous_transformation',
+    'merlict_c89_wrapper',
+    'merlict_c89',
+    'merlict_c89'
+)
+
 setuptools.setup(
     name='homogeneous_transformation',
     version="0.0.0",
@@ -40,10 +47,11 @@ setuptools.setup(
                     'homogeneous_transformation',
                     'merlict_c89_wrapper',
                     'wrapper.pyx'),
-                os.path.join(
-                    'homogeneous_transformation',
-                    'merlict_c89_wrapper',
-                    'merlict_c89_wrapper.c'),
+                os.path.join(_mli_path, 'mliVec.c'),
+                os.path.join(_mli_path, 'mliRay.c'),
+                os.path.join(_mli_path, 'mliRotMat.c'),
+                os.path.join(_mli_path, 'mliQuaternion.c'),
+                os.path.join(_mli_path, 'mliHomTra.c'),
             ],
             include_dirs=[numpy.get_include(), "homogeneous_transformation"],
             language="c",
