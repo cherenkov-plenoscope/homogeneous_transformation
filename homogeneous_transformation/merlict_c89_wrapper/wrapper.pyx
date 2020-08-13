@@ -125,7 +125,7 @@ def sequence(homtra_A_to_B, homtra_B_to_C):
 
 
 cdef mliHomTra _extract_homtra(homtra):
-    h_comp = mliHomTraComp_set(
+    _homtra_comp = mliHomTraComp_set(
         mliVec_set(
             homtra.trans.x,
             homtra.trans.y,
@@ -138,7 +138,7 @@ cdef mliHomTra _extract_homtra(homtra):
             homtra.rot.z,
         )
     )
-    return mliHomTra_from_compact(h_comp)
+    return mliHomTra_from_compact(_homtra_comp)
 
 
 def transform_position(homtra_A_to_B, position_wrt_A):
