@@ -1,4 +1,3 @@
-import numpy as np
 from collections import namedtuple
 cimport cython
 
@@ -84,11 +83,14 @@ Quaternion = namedtuple('Quaternion', ['w', 'x', 'y', 'z'])
 HomTra = namedtuple('HomTra', ['trans', 'rot'])
 Vec = namedtuple('Vec', ['x', 'y', 'z'])
 
+
+@cython.embedsignature(True)
 def Quaternion_set_tait_bryan(x_angle, y_angle, z_angle):
     q = mliQuaternion_set_tait_bryan(x_angle, y_angle, z_angle)
     return Quaternion(q.w, q.x, q.y, q.z)
 
 
+@cython.embedsignature(True)
 def Quaternion_set_rotaxis_and_angle(rot_axis, angle):
     q = mliQuaternion_set_rotaxis_and_angle(
         mliVec_set(rot_axis[0], rot_axis[1], rot_axis[2]),
@@ -97,11 +99,13 @@ def Quaternion_set_rotaxis_and_angle(rot_axis, angle):
     return Quaternion(q.w, q.x, q.y, q.z)
 
 
+@cython.embedsignature(True)
 def Quaternion_set_unit_xyz(x, y, z):
     q = mliQuaternion_set_unit_xyz(x, y, z)
     return Quaternion(q.w, q.x, q.y, q.z)
 
 
+@cython.embedsignature(True)
 def sequence(homtra_A_to_B, homtra_B_to_C):
     """
     Return the homogenous transformation (a_to_d) by estimating the sequence
@@ -141,6 +145,7 @@ cdef mliHomTra _extract_homtra(homtra):
     return mliHomTra_from_compact(_homtra_comp)
 
 
+@cython.embedsignature(True)
 def transform_position(homtra_A_to_B, position_wrt_A):
     """
     returns position w.r.t. B.
@@ -154,6 +159,7 @@ def transform_position(homtra_A_to_B, position_wrt_A):
     return [_pB.x, _pB.y, _pB.z]
 
 
+@cython.embedsignature(True)
 def transform_position_inverse(homtra_A_to_B, position_wrt_B):
     """
     returns position w.r.t. A.
@@ -167,6 +173,7 @@ def transform_position_inverse(homtra_A_to_B, position_wrt_B):
     return [_pA.x, _pA.y, _pA.z]
 
 
+@cython.embedsignature(True)
 def transform_direction(homtra_A_to_B, direction_wrt_A):
     """
     returns direction w.r.t. A.
@@ -180,6 +187,7 @@ def transform_direction(homtra_A_to_B, direction_wrt_A):
     return [_dB.x, _dB.y, _dB.z]
 
 
+@cython.embedsignature(True)
 def transform_direction_inverse(homtra_A_to_B, direction_wrt_B):
     """
     returns direction w.r.t. B.

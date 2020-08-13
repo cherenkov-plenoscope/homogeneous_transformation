@@ -7,7 +7,7 @@ with open("README.md", "r") as f:
 
 _mli_path = os.path.join(
     'homogeneous_transformation',
-    'merlict_c89_wrapper',
+    '_merlict_c89_wrapper',
     'merlict_c89',
     'merlict_c89'
 )
@@ -23,7 +23,7 @@ setuptools.setup(
     url='https://github.com/cherenkov-plenoscope/homogeneous_transformation',
     packages=[
         'homogeneous_transformation',
-        'homogeneous_transformation.merlict_c89_wrapper'
+        'homogeneous_transformation._merlict_c89_wrapper'
     ],
     install_requires=[
         'setuptools>=18.0',
@@ -41,11 +41,11 @@ setuptools.setup(
     python_requires='>=3',
     ext_modules=[
         setuptools.Extension(
-            "homogeneous_transformation.merlict_c89_wrapper.wrapper",
+            "homogeneous_transformation._merlict_c89_wrapper.wrapper",
             sources=[
                 os.path.join(
                     'homogeneous_transformation',
-                    'merlict_c89_wrapper',
+                    '_merlict_c89_wrapper',
                     'wrapper.pyx'),
                 os.path.join(_mli_path, 'mliVec.c'),
                 os.path.join(_mli_path, 'mliRay.c'),
