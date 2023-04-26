@@ -1,4 +1,4 @@
-import homogenous_transformation as ht
+import homogeneous_transformation as ht
 import numpy as np
 
 

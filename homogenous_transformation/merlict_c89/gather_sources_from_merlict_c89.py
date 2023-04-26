@@ -7,11 +7,11 @@ import sys
 import shutil
 
 merlict_c89_dir = sys.argv[1]
-homogenous_transformation_dir = sys.argv[2]
+homogeneous_transformation_dir = sys.argv[2]
 
 src = os.path.join(merlict_c89_dir, "merlict")
 dst = os.path.join(
-    homogenous_transformation_dir, "homogenous_transformation", "merlict_c89"
+    homogeneous_transformation_dir, "homogeneous_transformation", "merlict_c89"
 )
 
 parts = [
@@ -67,19 +67,19 @@ MERLICT_C89_VERSION_STR = "{:d}.{:d}.{:d}".format(
 
 # define this py-package's version
 # --------------------------------
-HOMOGENOUS_TRANSFORMATION_VERSION_STR = "0.0.0"
+homogeneous_transformation_VERSION_STR = "0.0.0"
 
 # combine versions
 # ----------------
 VERSION_STR = "{:s}.{:s}".format(
-    HOMOGENOUS_TRANSFORMATION_VERSION_STR, MERLICT_C89_VERSION_STR,
+    homogeneous_transformation_VERSION_STR, MERLICT_C89_VERSION_STR,
 )
 
 # export version
 # --------------
 version_path = os.path.join(
-    homogenous_transformation_dir,
-    "homogenous_transformation",
+    homogeneous_transformation_dir,
+    "homogeneous_transformation",
     "automatically_generated_version.py",
 )
 with open(os.path.join(version_path), "wt") as f:
