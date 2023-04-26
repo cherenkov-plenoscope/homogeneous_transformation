@@ -4,27 +4,17 @@ import numpy as np
 
 A = {
     "pos": [1.0, 0.0, 0.0],
-    "rot": {
-        "repr": "axis_angle",
-        "axis":[0.0, 0.0, 1.0],
-        "angle_deg": 0.3,
-    },
+    "rot": {"repr": "axis_angle", "axis": [0.0, 0.0, 1.0], "angle_deg": 0.3,},
 }
 
 B = {
     "pos": [0.0, 30.0, 1.0],
-    "rot": {
-        "repr": "tait_bryan",
-        "xyz_deg":[1.0, 2.0, 45.0],
-    },
+    "rot": {"repr": "tait_bryan", "xyz_deg": [1.0, 2.0, 45.0],},
 }
 
 C = {
     "pos": [0.0, 1.0, 1.0],
-    "rot": {
-        "repr": "quaternion",
-        "xyz":[0.0, 0.1, 0.2],
-    },
+    "rot": {"repr": "quaternion", "xyz": [0.0, 0.1, 0.2],},
 }
 
 
@@ -76,13 +66,13 @@ def test_ray():
         for i in range(50):
             for j in range(50):
 
-                support = np.array([
-                    prng.uniform(), prng.uniform(), prng.uniform(),
-                ])
+                support = np.array(
+                    [prng.uniform(), prng.uniform(), prng.uniform(),]
+                )
 
-                direction = np.array([
-                    prng.uniform(), prng.uniform(), prng.uniform(),
-                ])
+                direction = np.array(
+                    [prng.uniform(), prng.uniform(), prng.uniform(),]
+                )
 
                 direction = direction / np.linalg.norm(direction)
 
@@ -109,11 +99,11 @@ def test_shapes_one_dim():
     prng = np.random.Generator(np.random.PCG64(42))
     tA = ht.compile(A)
 
-    p = prng.uniform(size=(3, ))
-    assert p.shape == (3, )
+    p = prng.uniform(size=(3,))
+    assert p.shape == (3,)
 
     tp = ht.transform_position(t=tA, p=p)
-    assert tp.shape == (3, )
+    assert tp.shape == (3,)
 
 
 def test_to_matrix():
