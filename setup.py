@@ -16,7 +16,7 @@ with open(version_path, "r") as f:
     version = version_string.strip("\"'")
 
 setuptools.setup(
-    name="homogeneous_transformation_sebastian_achim_mueller",
+    name="homogeneous_transformation_sebastian-achim-mueller",
     version=version,
     description="View and work on plenoscope events",
     long_description=long_description,
