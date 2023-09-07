@@ -25,7 +25,10 @@ setuptools.setup(
     url="https://github.com/cherenkov-plenoscope/homogeneous_transformation.git",
     author="Sebastian Achim Mueller",
     author_email="sebastian-achim.mueller@mpi-hd.mpg.de",
-    packages=["homogeneous_transformation"],
+    packages=[
+        "homogeneous_transformation",
+        "homogeneous_transformation.merlict_c89",
+    ],
     package_data={"homogeneous_transformation": []},
     install_requires=["setuptools>=18.0", "cython",],
     ext_modules=[
