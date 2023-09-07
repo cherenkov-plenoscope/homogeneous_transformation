@@ -85,4 +85,4 @@ version_path = os.path.join(
 with open(os.path.join(version_path), "wt") as f:
     f.write("# I was written by: ")
     f.write("merlict_c89/gather_sources_from_merlict_c89.py\n")
-    f.write('__version__ = "' + VERSION_STR + '"')
+    f.write('__version__ = "' + VERSION_STR + '"\n')
