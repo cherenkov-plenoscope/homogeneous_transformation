@@ -1,5 +1,6 @@
 import setuptools
 import os
+from Cython.Build import cythonize
 
 
 with open("README.rst", "r") as f:
@@ -29,31 +30,14 @@ setuptools.setup(
         "homogeneous_transformation",
         "homogeneous_transformation.merlict_c89",
     ],
-    package_data={
-        "homogeneous_transformation": [
-            os.path.join("merlict_c89", "*.h"),
-            os.path.join("merlict_c89", "*.c"),
-            os.path.join("merlict_c89", "*.pyx"),
-        ],
-    },
+    package_data={"homogeneous_transformation": [],},
     install_requires=["setuptools>=18.0", "cython",],
-    ext_modules=[
-        setuptools.Extension(
-            "homogeneous_transformation.merlict_c89.wrapper",
-            sources=[
-                os.path.join(
-                    "homogeneous_transformation", "merlict_c89", "wrapper.pyx"
-                ),
-                os.path.join(
-                    "homogeneous_transformation", "merlict_c89", "mli_subset.c"
-                ),
-            ],
-            include_dirs=[
-                os.path.join("homogeneous_transformation", "merlict_c89"),
-            ],
-            language="c",
-        ),
-    ],
+    ext_modules=cythonize(
+        os.path.join("homogeneous_transformation", "merlict_c89", "*.pyx"),
+        include_path=[
+            os.path.join("homogeneous_transformation", "merlict_c89"),
+        ],
+    ),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GPLv3",
