@@ -67,7 +67,7 @@ MERLICT_C89_VERSION_STR = "{:d}.{:d}.{:d}".format(
 
 # define this py-package's version
 # --------------------------------
-homogeneous_transformation_VERSION_STR = "0.0.0"
+homogeneous_transformation_VERSION_STR = "0.0.1"
 
 # combine versions
 # ----------------
