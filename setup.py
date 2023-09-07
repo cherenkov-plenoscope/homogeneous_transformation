@@ -1,5 +1,4 @@
 import setuptools
-import numpy
 import os
 
 
@@ -41,7 +40,6 @@ setuptools.setup(
                 ),
             ],
             include_dirs=[
-                numpy.get_include(),
                 os.path.join("homogeneous_transformation", "merlict_c89"),
             ],
             language="c",
