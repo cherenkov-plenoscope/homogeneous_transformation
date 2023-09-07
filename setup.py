@@ -26,7 +26,11 @@ setuptools.setup(
     author="Sebastian Achim Mueller",
     author_email="sebastian-achim.mueller@mpi-hd.mpg.de",
     packages=["homogeneous_transformation"],
-    package_data={"homogeneous_transformation": []},
+    package_data={
+        "homogeneous_transformation": [
+            os.path.join("merlict_c89", "*"),
+        ]
+    },
     install_requires=["setuptools>=18.0", "cython",],
     ext_modules=[
         setuptools.Extension(
