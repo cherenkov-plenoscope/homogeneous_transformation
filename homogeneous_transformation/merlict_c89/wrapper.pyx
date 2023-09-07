@@ -1,6 +1,6 @@
 import numpy as np
 cimport numpy as np
-cimport cython
+
 
 cdef extern from "mli_subset.h":
     cdef struct mliVec:
@@ -67,6 +67,7 @@ cdef extern from "loops.h":
         unsigned long num_vec,
         const unsigned long mode,
     )
+
 
 def _mliVec2py(mliVec mliv):
     return np.array([mliv.x, mliv.y, mliv.z], dtype=np.float64)
@@ -196,7 +197,7 @@ def HomTraComp_apply(t_comp, vec_in, mode):
     assert vec_in.shape[0] >= 1
     assert vec_in.shape[1] == 3
 
-    cdef unsigned long num_vec  = vec_in.shape[0]
+    cdef unsigned long num_vec = vec_in.shape[0]
 
     cdef np.ndarray[double, mode="c"] _vec_in = np.ascontiguousarray(
         vec_in.flatten(order="c"),
