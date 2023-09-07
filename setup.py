@@ -31,7 +31,7 @@ setuptools.setup(
         "homogeneous_transformation.merlict_c89",
     ],
     package_data={"homogeneous_transformation": [],},
-    install_requires=["setuptools>=18.0", "cython",],
+    install_requires=[],
     ext_modules=cythonize(
         os.path.join("homogeneous_transformation", "merlict_c89", "*.pyx"),
         include_path=[
