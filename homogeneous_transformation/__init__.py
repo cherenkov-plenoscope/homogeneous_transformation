@@ -1,10 +1,10 @@
 """
 Define, sequence, and apply transformations in 3D.
 """
+from .version import __version__
 from . import merlict_c89
 from . import quaternion
 import numpy as np
-from .automatically_generated_version import __version__
 
 
 EXAMPLE_CIVIL = {

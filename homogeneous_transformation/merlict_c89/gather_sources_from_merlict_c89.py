@@ -81,7 +81,7 @@ VERSION_STR = "{:s}.{:s}".format(
 version_path = os.path.join(
     homogeneous_transformation_dir,
     "homogeneous_transformation",
-    "automatically_generated_version.py",
+    "version.py",
 )
 with open(os.path.join(version_path), "wt") as f:
     f.write("# I was written by: ")

@@ -3,14 +3,11 @@ import os
 from Cython.Build import cythonize
 
 
-with open("README.rst", "r") as f:
+with open("README.rst", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 
-version_path = os.path.join(
-    "homogeneous_transformation", "automatically_generated_version.py"
-)
-with open(version_path, "r") as f:
+with open(os.path.join("homogeneous_transformation", "version.py")) as f:
     txt = f.read()
     last_line = txt.splitlines()[-1]
     version_string = last_line.split()[-1]
