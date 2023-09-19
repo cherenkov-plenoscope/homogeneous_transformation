@@ -18,10 +18,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          python -m pip3.7 install pip --upgrade
-          python -m pip3.7 install pytest
-          python -m pip3.7 install -r requirements.txt
-          python -m pip3.7 install .
+          python3 -m pip install pip --upgrade
+          python3 -m pip install pytest
+          python3 -m pip install -r requirements.txt
+          python3 -m pip install .
       - name: Test with pytest
         run: |
           pytest .
