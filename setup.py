@@ -33,7 +33,7 @@ setuptools.setup(
             os.path.join("merlict_c89", "*"),
         ],
     },
-    install_requires=["cython"],
+    install_requires=[],
     ext_modules=Cython.Build.cythonize(
         os.path.join(
             "homogeneous_transformation", "merlict_c89", "wrapper.pyx"
