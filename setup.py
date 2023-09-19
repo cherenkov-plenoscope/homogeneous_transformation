@@ -2,6 +2,7 @@ import setuptools
 import os
 import Cython
 from Cython import Build
+import numpy
 
 
 with open("README.rst", "r", encoding="utf-8") as f:
@@ -42,6 +43,7 @@ setuptools.setup(
             os.path.join("homogeneous_transformation", "merlict_c89"),
         ],
     ),
+    include_dirs=[numpy.get_include()],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GPLv3",
