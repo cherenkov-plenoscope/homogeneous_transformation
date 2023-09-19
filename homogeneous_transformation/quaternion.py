@@ -32,9 +32,16 @@ def compile(rot_civil, quaternion_norm_margin=1e-6):
     elif rt["repr"] == "axis_angle":
         rot_axis = np.array(rt["axis"])
         angle = np.deg2rad(rt["angle_deg"])
-        return set_axis_angle(rot_axis=rot_axis, angle=angle,)
+        return set_axis_angle(
+            rot_axis=rot_axis,
+            angle=angle,
+        )
     elif rt["repr"] == "quaternion":
-        q = set_unit_xyz(x=rt["xyz"][0], y=rt["xyz"][1], z=rt["xyz"][2],)
+        q = set_unit_xyz(
+            x=rt["xyz"][0],
+            y=rt["xyz"][1],
+            z=rt["xyz"][2],
+        )
         _assert_unit_quaternion(
             q=q, quaternion_norm_margin=quaternion_norm_margin
         )
@@ -57,7 +64,8 @@ def set_axis_angle(rot_axis, angle):
         Rotation angle/rad.
     """
     return merlict_c89.wrapper.quaternion_set_rotaxis_and_angle(
-        rot_axis, angle,
+        rot_axis,
+        angle,
     )
 
 

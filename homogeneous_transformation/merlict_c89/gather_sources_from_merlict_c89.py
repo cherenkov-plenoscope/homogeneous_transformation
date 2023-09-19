@@ -72,7 +72,8 @@ homogeneous_transformation_VERSION_STR = "0.0.1"
 # combine versions
 # ----------------
 VERSION_STR = "{:s}.{:s}".format(
-    homogeneous_transformation_VERSION_STR, MERLICT_C89_VERSION_STR,
+    homogeneous_transformation_VERSION_STR,
+    MERLICT_C89_VERSION_STR,
 )
 
 # export version

@@ -18,19 +18,21 @@ with open(version_path, "r") as f:
 
 
 setuptools.setup(
-    name="homogeneous_transformation_sebastian-achim-mueller",
+    name="homogeneous_transformation",
     version=version,
     description="View and work on plenoscope events",
     long_description=long_description,
     long_description_content_type="text/x-rst",
-    url="https://github.com/cherenkov-plenoscope/homogeneous_transformation.git",
+    url="https://github.com/cherenkov-plenoscope/homogeneous_transformation",
     author="Sebastian Achim Mueller",
     author_email="sebastian-achim.mueller@mpi-hd.mpg.de",
     packages=[
         "homogeneous_transformation",
         "homogeneous_transformation.merlict_c89",
     ],
-    package_data={"homogeneous_transformation": [],},
+    package_data={
+        "homogeneous_transformation": [],
+    },
     install_requires=[],
     ext_modules=cythonize(
         os.path.join("homogeneous_transformation", "merlict_c89", "*.pyx"),
