@@ -29,11 +29,15 @@ setuptools.setup(
         "homogeneous_transformation.merlict_c89",
     ],
     package_data={
-        "homogeneous_transformation": [],
+        "homogeneous_transformation": [
+            os.path.join("merlict_c89", "*"),
+        ],
     },
-    install_requires=[],
+    install_requires=["cython"],
     ext_modules=Cython.Build.cythonize(
-        os.path.join("homogeneous_transformation", "merlict_c89", "*.pyx"),
+        os.path.join(
+            "homogeneous_transformation", "merlict_c89", "wrapper.pyx"
+        ),
         include_path=[
             os.path.join("homogeneous_transformation", "merlict_c89"),
         ],
