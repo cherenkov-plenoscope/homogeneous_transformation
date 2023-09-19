@@ -1,6 +1,7 @@
 import setuptools
 import os
-from Cython.Build import cythonize
+import Cython
+from Cython import Build
 
 
 with open("README.rst", "r", encoding="utf-8") as f:
@@ -31,7 +32,7 @@ setuptools.setup(
         "homogeneous_transformation": [],
     },
     install_requires=[],
-    ext_modules=cythonize(
+    ext_modules=Cython.Build.cythonize(
         os.path.join("homogeneous_transformation", "merlict_c89", "*.pyx"),
         include_path=[
             os.path.join("homogeneous_transformation", "merlict_c89"),
