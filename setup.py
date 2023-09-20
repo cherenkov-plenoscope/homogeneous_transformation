@@ -2,7 +2,6 @@ import setuptools
 import os
 import Cython
 from Cython import Build
-import numpy
 
 
 with open("README.rst", "r", encoding="utf-8") as f:
@@ -29,7 +28,7 @@ merlict_c89_sources = [
 
 extensions = [
     setuptools.Extension(
-        name="wrapper",
+        name="homogeneous_transformation.merlict_c89.wrapper",
         sources=[
             os.path.join(
                 "homogeneous_transformation", "merlict_c89", "wrapper.pyx"
@@ -62,7 +61,6 @@ setuptools.setup(
     },
     install_requires=[],
     ext_modules=Cython.Build.cythonize(extensions),
-    include_dirs=[numpy.get_include()],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GPLv3",
