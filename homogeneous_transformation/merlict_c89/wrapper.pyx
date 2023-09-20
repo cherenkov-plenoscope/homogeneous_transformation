@@ -1,5 +1,6 @@
 import numpy as np
-cimport numpy as np
+cimport numpy as cnp
+cnp.import_array()
 
 
 cdef extern from "mli_subset.h":
@@ -199,12 +200,12 @@ def HomTraComp_apply(t_comp, vec_in, mode):
 
     cdef unsigned long num_vec = vec_in.shape[0]
 
-    cdef np.ndarray[double, mode="c"] _vec_in = np.ascontiguousarray(
+    cdef cnp.ndarray[double, mode="c"] _vec_in = np.ascontiguousarray(
         vec_in.flatten(order="c"),
         dtype=np.float64,
     )
 
-    cdef np.ndarray[double, mode="c"] _vec_out = np.zeros(
+    cdef cnp.ndarray[double, mode="c"] _vec_out = np.zeros(
         (3* num_vec),
         dtype=np.float64,
     )

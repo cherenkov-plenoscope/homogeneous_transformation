@@ -2,6 +2,7 @@ import setuptools
 import os
 import Cython
 from Cython import Build
+import numpy
 
 
 with open("README.rst", "r", encoding="utf-8") as f:
@@ -38,6 +39,7 @@ extensions = [
             os.path.join("homogeneous_transformation", "merlict_c89", pp)
             for pp in merlict_c89_sources
         ],
+        include_dirs=[numpy.get_include()],
     )
 ]
 
