@@ -2,7 +2,7 @@
 #ifndef LOOP_H_
 #define LOOP_H_
 
-#include "mliHomTra.h"
+#include "mli_subset.h"
 
 int mliHomTraComp_transform(
         const struct mliHomTraComp t_comp,
