@@ -16,6 +16,32 @@ with open(os.path.join("homogeneous_transformation", "version.py")) as f:
     version = version_string.strip("\"'")
 
 
+merlict_c89_sources = [
+    "chk_debug.c",
+    "mli_quadratic_equation.c",
+    "mli_version.c",
+    "mliHomTra.c",
+    "mliMat.c",
+    "mliQuaternion.c",
+    "mliRay.c",
+    "mliVec.c",
+]
+
+extensions = [
+    setuptools.Extension(
+        name="wrapper",
+        sources=[
+            os.path.join(
+                "homogeneous_transformation", "merlict_c89", "wrapper.pyx"
+            ),
+        ]
+        + [
+            os.path.join("homogeneous_transformation", "merlict_c89", pp)
+            for pp in merlict_c89_sources
+        ],
+    )
+]
+
 setuptools.setup(
     name="homogeneous_transformation",
     version=version,
@@ -35,14 +61,7 @@ setuptools.setup(
         ],
     },
     install_requires=[],
-    ext_modules=Cython.Build.cythonize(
-        os.path.join(
-            "homogeneous_transformation", "merlict_c89", "wrapper.pyx"
-        ),
-        include_path=[
-            os.path.join("homogeneous_transformation", "merlict_c89"),
-        ],
-    ),
+    ext_modules=Cython.Build.cythonize(extensions),
     include_dirs=[numpy.get_include()],
     classifiers=[
         "Programming Language :: Python :: 3",
