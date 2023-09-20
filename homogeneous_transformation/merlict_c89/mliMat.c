@@ -114,7 +114,6 @@ double mliMat_get(const struct mliMat *a, uint64_t col, uint64_t row)
                 assert(0);
                 break;
         }
-        return 0.0;
 }
 
 struct mliMat mliMat_unity(void)

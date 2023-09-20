@@ -28,16 +28,12 @@ parts = [
 for p in parts:
     shutil.copy(os.path.join(src, "{:s}.h".format(p)), dst)
     shutil.copy(os.path.join(src, "{:s}.c".format(p)), dst)
-    test_path = os.path.join(src, "{:s}_test.c".format(p))
-    if os.path.exists(test_path):
-        shutil.copy(test_path, dst)
 
 
-for ext in ["h", "c"]:
-    with open(os.path.join(dst, "mli_subset.{:s}".format(ext)), "wt") as f:
-        f.write("#include <assert.h>\n")  # apparently missing.
-        for p in parts:
-            f.write('#include "{:s}.{:s}"\n'.format(p, ext))
+with open(os.path.join(dst, "mli_subset.h"), "wt") as f:
+    f.write("#include <assert.h>\n")  # apparently missing.
+    for part in parts:
+        f.write('#include "{:s}.h"\n'.format(part))
 
 
 # gather merlict version

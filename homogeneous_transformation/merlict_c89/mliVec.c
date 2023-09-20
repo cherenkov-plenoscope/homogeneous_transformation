@@ -223,5 +223,4 @@ double mliVec_get(const struct mliVec *a, const uint64_t dim)
                 assert(0);
                 break;
         }
-        return 0.0;
 }
