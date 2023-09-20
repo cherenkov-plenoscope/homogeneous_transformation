@@ -1,9 +1,0 @@
-#include <assert.h>
-#include "chk_debug.h"
-#include "mli_version.h"
-#include "mliVec.h"
-#include "mliQuaternion.h"
-#include "mliHomTra.h"
-#include "mliRay.h"
-#include "mliMat.h"
-#include "mli_quadratic_equation.h"

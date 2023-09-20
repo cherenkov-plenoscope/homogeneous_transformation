@@ -30,12 +30,6 @@ for p in parts:
     shutil.copy(os.path.join(src, "{:s}.c".format(p)), dst)
 
 
-with open(os.path.join(dst, "mli_subset.h"), "wt") as f:
-    f.write("#include <assert.h>\n")  # apparently missing.
-    for part in parts:
-        f.write('#include "{:s}.h"\n'.format(part))
-
-
 # gather merlict version
 # ----------------------
 MERLICT_C89_VERSION = {

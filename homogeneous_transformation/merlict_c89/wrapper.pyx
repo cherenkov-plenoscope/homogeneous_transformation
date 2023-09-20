@@ -3,36 +3,25 @@ cimport numpy as cnp
 cnp.import_array()
 
 
-cdef extern from "mli_subset.h":
+cdef extern from "mliVec.h":
     cdef struct mliVec:
         double x
         double y
         double z
 
+
+cdef extern from "mliRay.h":
     cdef struct mliRay:
         mliVec support
         mliVec direction
 
+
+cdef extern from "mliQuaternion.h":
     cdef struct mliQuaternion:
         double w
         double x
         double y
         double z
-
-    cdef struct mliHomTraComp:
-        mliVec translation
-        mliQuaternion rotation
-
-    cdef struct mliMat:
-        double r00
-        double r01
-        double r02
-        double r10
-        double r11
-        double r12
-        double r20
-        double r21
-        double r22
 
     double mliQuaternion_norm(mliQuaternion q)
 
@@ -53,12 +42,32 @@ cdef extern from "mli_subset.h":
         const double z,
     )
 
+    mliMat mliQuaternion_to_matrix(const mliQuaternion quat)
+
+
+cdef extern from "mliHomTra.h":
+    cdef struct mliHomTraComp:
+        mliVec translation
+        mliQuaternion rotation
+
     mliHomTraComp mliHomTraComp_sequence(
         const mliHomTraComp a,
         const mliHomTraComp b,
     )
 
-    mliMat mliQuaternion_to_matrix(const mliQuaternion quat)
+
+cdef extern from "mliMat.h":
+    cdef struct mliMat:
+        double r00
+        double r01
+        double r02
+        double r10
+        double r11
+        double r12
+        double r20
+        double r21
+        double r22
+
 
 cdef extern from "loops.h":
     int mliHomTraComp_transform(
