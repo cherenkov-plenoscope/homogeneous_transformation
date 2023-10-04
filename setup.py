@@ -46,7 +46,10 @@ extensions = [
 setuptools.setup(
     name="homogeneous_transformation",
     version=version,
-    description="View and work on plenoscope events",
+    description=(
+        "Define and apply rotations and translations "
+        "in 3D space to numpy Arrays."
+    ),
     long_description=long_description,
     long_description_content_type="text/x-rst",
     url="https://github.com/cherenkov-plenoscope/homogeneous_transformation",
