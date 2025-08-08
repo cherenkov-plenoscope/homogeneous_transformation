@@ -2,6 +2,7 @@
 This script is only executed to either gather the c-sources from merlict_c89,
 or to bumb the version-number.
 """
+
 import os
 import sys
 import shutil
@@ -57,7 +58,7 @@ MERLICT_C89_VERSION_STR = "{:d}.{:d}.{:d}".format(
 
 # define this py-package's version
 # --------------------------------
-homogeneous_transformation_VERSION_STR = "0.0.1"
+homogeneous_transformation_VERSION_STR = "0.0.2"
 
 # combine versions
 # ----------------
